@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 require("dotenv").config();
 import mongoose from "mongoose";
-
+import HeroRouter from "./routes/hero.route";
 const DB_LOGIN = process.env.DB_LOGIN;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 
@@ -16,6 +16,6 @@ mongoose
   .catch((err) => {
     console.log("Error while connecting database::", err);
   });
-
+app.use("/api", HeroRouter);
 app.use(express.json());
 export default app;
