@@ -3,6 +3,7 @@ import {
   createHeroController,
   updateHeroController,
   getAllHeroController,
+  deleteHeroController,
 } from "../compose/hero.compose";
 const HeroRouter = Router();
 HeroRouter.get("/", async (req, res) => {
@@ -14,9 +15,8 @@ HeroRouter.post("/", (req, res) => {
 HeroRouter.put("/", (req, res) => {
   updateHeroController.handle(req, res);
 });
-HeroRouter.delete("/", async (req, res) => {
-  // const deleted = await repository.deleteAll();
-  // res.json(deleted);
+HeroRouter.delete("/:id", async (req, res) => {
+  deleteHeroController.handle(req, res);
 });
 
 export default HeroRouter;

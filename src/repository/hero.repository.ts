@@ -19,7 +19,7 @@ export class HeroRepository {
   async getAllHeroes() {
     return await heroRecordModel.find();
   }
-  async deleteOneUser(id: number) {
+  async deleteOneHero(id: number) {
     return await heroRecordModel.deleteOne({ id: id });
   }
   async deleteAll() {

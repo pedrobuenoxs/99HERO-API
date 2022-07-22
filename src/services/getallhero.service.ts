@@ -1,6 +1,5 @@
 import DTOHero from "../DTO/hero.dto";
 import { HeroRepository } from "../repository/hero.repository";
-import { Hero } from "../helpers/createHero.helpers";
 export class GetAllHeroService {
   constructor(private repository: HeroRepository) {}
 
