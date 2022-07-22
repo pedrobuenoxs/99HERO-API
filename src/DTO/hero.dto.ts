@@ -1,4 +1,5 @@
 export default interface DTOHero {
+  id?: number;
   name?: string;
   heroName: string;
   cities: [string];

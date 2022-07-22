@@ -29,4 +29,7 @@ export class HeroRepository {
   async alreadyExists(heroName: string) {
     return heroRecordModel.find({ heroName: heroName });
   }
+  async UpdateHero(data: IHero) {
+    return await heroRecordModel.updateOne({ id: data.id }, data);
+  }
 }

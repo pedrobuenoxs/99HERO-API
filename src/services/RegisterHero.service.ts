@@ -14,7 +14,9 @@ export class CreateHeroService {
 
       const id: number = new Date().valueOf();
       const newHero = new Hero(id, name, heroName, cities, disasters, teamwork);
-      const alreadyExists = await this.repository.alreadyExists(heroName);
+      const alreadyExists = await this.repository.alreadyExists(
+        newHero.heroName
+      );
 
       if (alreadyExists.length > 0) {
         throw new Error("Já existe um herói com esse codinome");
