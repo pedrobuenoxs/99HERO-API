@@ -1,14 +1,12 @@
 import { Router } from "express";
-import { HeroRepository } from "../repository/hero.repository";
 import {
   createHeroController,
   updateHeroController,
+  getAllHeroController,
 } from "../compose/hero.compose";
 const HeroRouter = Router();
-const repository = new HeroRepository();
 HeroRouter.get("/", async (req, res) => {
-  const all = await repository.findAll();
-  res.json(all);
+  getAllHeroController.handle(req, res);
 });
 HeroRouter.post("/", (req, res) => {
   createHeroController.handle(req, res);

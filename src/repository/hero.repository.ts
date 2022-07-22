@@ -13,11 +13,11 @@ export class HeroRepository {
   }
 
   async findByID(user_id: number) {
-    return heroRecordModel.find({ id: user_id });
+    return await heroRecordModel.find({ id: user_id });
   }
 
-  async findAll() {
-    return heroRecordModel.find();
+  async getAllHeroes() {
+    return await heroRecordModel.find();
   }
   async deleteOneUser(id: number) {
     return await heroRecordModel.deleteOne({ id: id });

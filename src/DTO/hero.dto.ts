@@ -5,4 +5,5 @@ export default interface DTOHero {
   cities: [string];
   disasters: [string];
   teamwork: string;
+  message?: string;
 }
