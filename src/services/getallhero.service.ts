@@ -10,6 +10,7 @@ export class GetAllHeroService {
 
       const allHeroes: DTOHero[] = findAllHeroes.map((hero) => {
         return {
+          id: hero.id,
           heroName: hero.heroName,
           cities: hero.cities,
           disasters: hero.disasters,
