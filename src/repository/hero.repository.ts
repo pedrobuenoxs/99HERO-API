@@ -25,4 +25,8 @@ export class HeroRepository {
   async deleteAll() {
     return await heroRecordModel.deleteMany({});
   }
+
+  async alreadyExists(heroName: string) {
+    return heroRecordModel.find({ heroName: heroName });
+  }
 }
