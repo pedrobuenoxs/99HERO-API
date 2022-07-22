@@ -16,6 +16,6 @@ mongoose
   .catch((err) => {
     console.log("Error while connecting database::", err);
   });
-app.use("/api", HeroRouter);
 app.use(express.json());
+app.use("/api", HeroRouter);
 export default app;
