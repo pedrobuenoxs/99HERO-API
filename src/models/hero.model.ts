@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import DTOHero from "../DTO/hero.dto";
 import IHero from "../interfaces/hero.interface";
 
 const UserRecordSchema: Schema = new Schema(
@@ -8,10 +9,11 @@ const UserRecordSchema: Schema = new Schema(
     heroName: { type: String },
     cities: { type: Array },
     disasters: { type: Array },
+    teamwork: { type: String },
   },
   {
     timestamps: true,
   }
 );
 
-export default mongoose.model<IHero>("userRecordModel", UserRecordSchema);
+export default mongoose.model<DTOHero>("userRecordModel", UserRecordSchema);

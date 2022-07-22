@@ -4,4 +4,5 @@ export default interface IHero {
   heroName: string;
   cities: [string];
   disasters: [string];
+  teamwork: string;
 }
