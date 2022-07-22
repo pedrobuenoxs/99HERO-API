@@ -7,7 +7,7 @@ export class CreateHeroController {
     try {
       const hero: DTOHero = req.body;
       const newHero = await this.service.handle(hero);
-      return res.status(201).json(newHero);
+      return res.status(201).json({ message: newHero.message });
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

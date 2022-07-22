@@ -10,7 +10,7 @@ const createHeroController = new CreateHeroController(createHeroService);
 const HeroRouter = Router();
 
 HeroRouter.get("/", async (req, res) => {
-  const all: DTOHero = await repository.findAll();
+  const all = await repository.findAll();
   res.json(all);
 });
 HeroRouter.post("/", (req, res) => {
