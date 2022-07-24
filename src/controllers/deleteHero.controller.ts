@@ -9,7 +9,7 @@ export class DeleteHeroController {
       const deleteHero = await this.service.handle(Number(id));
       return res.status(200).json(deleteHero);
     } catch (error) {
-      return res.status(400).json({ message: error.message });
+      return res.status(404).json(error.message);
     }
   }
 }

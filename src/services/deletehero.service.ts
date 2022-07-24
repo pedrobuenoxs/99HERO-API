@@ -10,7 +10,7 @@ export class DeleteHeroService {
 
       return { message: "Success" };
     } catch (error) {
-      return { message: error.message };
+      throw new Error(error);
     }
   }
 }
