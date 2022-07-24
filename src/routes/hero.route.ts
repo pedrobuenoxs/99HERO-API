@@ -15,7 +15,7 @@ HeroRouter.post("/hero", (req, res) => {
 HeroRouter.put("/hero", (req, res) => {
   updateHeroController.handle(req, res);
 });
-HeroRouter.delete("hero/:id", async (req, res) => {
+HeroRouter.delete("/hero/:id", (req, res) => {
   deleteHeroController.handle(req, res);
 });
 

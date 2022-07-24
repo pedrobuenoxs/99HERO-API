@@ -1,4 +1,3 @@
-import DTOHero from "../DTO/hero.dto";
 import IHero from "../interfaces/hero.interface";
 
 export class Hero implements IHero {

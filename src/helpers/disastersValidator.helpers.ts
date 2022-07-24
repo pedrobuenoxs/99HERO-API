@@ -1,12 +1,12 @@
 export function disastersValidator(disasters: string[]): any {
   const disastersList = [
-    "Assalto a bancos",
+    "assalto a bancos",
     "monstros gigantes",
     "desastres naturais",
   ];
   try {
     disasters.forEach((city) => {
-      if (!disastersList.includes(city)) {
+      if (!disastersList.includes(city.toLowerCase())) {
         throw new Error("error");
       }
     });

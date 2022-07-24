@@ -8,7 +8,7 @@ export class GetAllHeroController {
       const allHeroes = await this.service.handle();
       return res.status(200).json(allHeroes);
     } catch (error) {
-      return res.status(400).json({ message: error.message });
+      return res.status(400).json(error.message);
     }
   }
 }

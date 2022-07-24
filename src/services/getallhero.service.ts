@@ -18,7 +18,7 @@ export class GetAllHeroService {
       });
       return allHeroes;
     } catch (error) {
-      return { message: error.message };
+      throw new Error(error);
     }
   }
 }
