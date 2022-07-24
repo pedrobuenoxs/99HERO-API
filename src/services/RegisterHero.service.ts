@@ -33,7 +33,7 @@ export class CreateHeroService {
       };
       return { ...newHeroRecord, message: "Success" };
     } catch (error) {
-      return { message: error.message };
+      throw new Error(error);
     }
   }
 }

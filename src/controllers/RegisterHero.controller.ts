@@ -9,7 +9,7 @@ export class CreateHeroController {
       const newHero = await this.service.handle(hero);
       return res.status(201).json({ message: newHero.message });
     } catch (error) {
-      return res.status(400).json({ message: error.message });
+      return res.status(400).json(error.message);
     }
   }
 }
