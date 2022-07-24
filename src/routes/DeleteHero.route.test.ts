@@ -3,7 +3,7 @@ import request from "supertest";
 import app from "../app";
 import { HeroRepository } from "../repository/hero.repository";
 const Repository = new HeroRepository();
-beforeAll(async () => {
+beforeEach(async () => {
   await Repository.RegisterHero({
     id: 1658458923250,
     name: "Steve Rogerinho",
