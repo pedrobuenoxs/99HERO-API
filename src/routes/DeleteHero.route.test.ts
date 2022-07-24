@@ -42,5 +42,6 @@ describe("Hero DELETE Route", () => {
     const response = await request(app).delete("/api/hero/123456789");
 
     expect(await response.statusCode).toBe(404);
+    expect(await response.body).toEqual("Error: Hero não encontrado");
   });
 });

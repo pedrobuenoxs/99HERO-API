@@ -134,4 +134,28 @@ describe("Hero POST Route", () => {
     expect(await response.statusCode).toBe(400);
     expect(await response.body).toEqual("Error: Cidades inválidas");
   });
+  test("Should return 400 if hero alreay exists", async () => {
+    await Repository.RegisterHero({
+      id: 1658458923250,
+      name: "Steve Rogerinho",
+      heroName: "Capitão América",
+      cities: ["New York"],
+      disasters: ["desastres naturais"],
+      teamwork: "Não",
+    });
+
+    const response = await request(app)
+      .post("/api/hero")
+      .send({
+        name: "Steve Rogerinho",
+        heroName: "Capitão América",
+        cities: ["Tóquio"],
+        disasters: ["Assalto a bancos"],
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual(
+      "Error: Já existe um herói com esse codinome"
+    );
+  });
 });

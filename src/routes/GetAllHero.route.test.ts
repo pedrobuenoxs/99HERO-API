@@ -18,10 +18,11 @@ afterAll((done) => {
 });
 
 describe("Hero GET Route", () => {
-  test("Should return 200 as status code and list all heros and correct properties", async () => {
+  test("Should return 200 as status code and list all heros without name", async () => {
     const response = await request(app).get("/api/hero");
     response.body.forEach((hero: DTOHero) => {
       expect(hero).toHaveProperty("id");
+      expect(hero).not.toHaveProperty("name");
       expect(hero).toHaveProperty("heroName");
       expect(hero).toHaveProperty("cities");
       expect(hero).toHaveProperty("disasters");
