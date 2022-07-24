@@ -1,8 +1,8 @@
 export function citiesValidator(cities: string[]): any {
-  const citiesList = ["Tóquio", "New York", "Rio de Janeiro"];
+  const citiesList = ["tóquio", "new york", "rio de janeiro"];
   try {
     cities.forEach((city) => {
-      if (!citiesList.includes(city)) {
+      if (!citiesList.includes(city.toLowerCase())) {
         throw new Error("error");
       }
     });

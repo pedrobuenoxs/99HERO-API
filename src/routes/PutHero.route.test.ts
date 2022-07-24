@@ -21,14 +21,129 @@ describe("Hero PUT Route", () => {
       .put("/api/hero")
       .send({
         id: 1658458923250,
-        name: "Steve Rogers",
+        name: "Steve Rogerinho",
         heroName: "Capitão América",
         cities: ["New York"],
-        disasters: ["assalto a bancos", "desastres naturais"],
+        disasters: ["Assalto a bancos", "desastres naturais"],
         teamwork: "Não",
       });
 
     expect(await response.statusCode).toBe(200);
     expect(await response.body).toMatchObject({ message: "Success" });
+  });
+
+  test("Should return 400 if id is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        name: "Steve Rogers",
+        heroName: "Capitão América",
+        cities: ["New York"],
+        disasters: ["Assalto a bancos", "desastres naturais"],
+        teamwork: "Não",
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Id é obrigatório");
+  });
+  test("Should return 400 if name is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        id: 1658458923250,
+        heroName: "Capitão América",
+        cities: ["New York"],
+        disasters: ["Assalto a bancos", "desastres naturais"],
+        teamwork: "Não",
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Nome é obrigatório");
+  });
+  test("Should return 400 if heroName is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        id: 1658458923250,
+        name: "Steve Rogers",
+        cities: ["New York"],
+        disasters: ["Assalto a bancos", "desastres naturais"],
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Codinome é obrigatório");
+  });
+  test("Should return 400 if cities is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        id: 1658458923250,
+        name: "Steve Rogers",
+        heroName: "Capitão América",
+        disasters: ["Assalto a bancos", "desastres naturais"],
+        teamwork: "Não",
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Cidades é obrigatório");
+  });
+  test("Should return 400 if disasters is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        id: 1658458923250,
+        name: "Steve Rogers",
+        heroName: "Capitão América",
+        cities: ["New York"],
+        teamwork: "Não",
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Desastres é obrigatório");
+  });
+  test("Should return 400 if teamwork is not provided", async () => {
+    const response = await request(app)
+      .put("/api/hero")
+      .send({
+        id: 1658458923250,
+        name: "Steve Rogers",
+        heroName: "Capitão América",
+        cities: ["New York"],
+        disasters: ["Assalto a bancos", "desastres naturais"],
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Teamwork é obrigatório");
+  });
+  test("Should return 400 if disasters is not valid", async () => {
+    const response = await request(app)
+      .post("/api/hero")
+      .send({
+        name: "the_Name",
+        heroName: "the_hero",
+        cities: ["Tóquio", "New York", "Rio de Janeiro"],
+        disasters: ["anyDisaster", "anyDisaster"],
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Desastres inválidos");
+  });
+
+  test("Should return 400 if cities is not valid", async () => {
+    const response = await request(app)
+      .post("/api/hero")
+      .send({
+        name: "the_Name",
+        heroName: "the_hero",
+        cities: ["Anywhere", "Anywhere"],
+        disasters: [
+          "Assalto a bancos",
+          "monstros gigantes",
+          "desastres naturais",
+        ],
+      });
+
+    expect(await response.statusCode).toBe(400);
+    expect(await response.body).toEqual("Error: Cidades inválidas");
   });
 });
